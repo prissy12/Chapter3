@@ -1,15 +1,10 @@
-provider "aws" {
-region = "us-east-1"
-}
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "tom-terraform-up"
+  versioning {
+  enabled = true
+  }
 
-resources "aws_s3_bucket" "terraform_state" {
-bucket = "toms1-terraform_state"
-
-versioning {
-enabled = true
-}
-
-lifecycle {
-prevent_destory = true
-}
-}
+  lifecycle {
+  prevent_destroy = true  
+  }
+  }
